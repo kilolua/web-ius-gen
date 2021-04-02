@@ -1,0 +1,120 @@
+/*
+ * @NOTE: Prepend a `~` to css file paths that are in your node_modules
+ *        See https://github.com/webpack-contrib/sass-loader#imports
+ */
+.App{
+  position:absolute;
+  left:0;
+  top: 0;
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  width: 1024px;
+  height: 768px;
+}
+.main{
+  position:absolute;
+  top: 76px;
+  left: 267px;
+  width: 757px;
+  height: 692px;
+  background:#121421;
+}
+
+.left-menu{
+  position:absolute;
+  top: 76px;
+  left: 0;
+  width: 267px;
+  height: 692px;
+  background:#161A27;
+}
+.header{
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 1024px;
+  height: 76px;
+  background:#1D1F2C;
+}
+.logo{
+  position:absolute;
+  top: 20px;
+  left: 35px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 37px;
+}
+.menu-container{
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 267px;
+  height: 227px;
+  background:#27283C;
+}
+
+.menu-items{
+  position:absolute;
+  top: 31px;
+  left: 36px;
+  width: 162px;
+  height: 151px;
+  background:#27283C;
+}
+
+.menu-item{
+  width:162px;
+  height: 28px;
+  margin-bottom: 13px;
+}
+
+.menu-item-text{
+  position: relative;
+  display: inline-block;
+  left: 16px;
+  top: 3px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  height:28px;
+  /* identical to box height */
+
+  cursor: pointer;
+  color: #FFFFFF;
+}
+
+.input-card{
+  position: absolute;
+  top: 50px;
+  left: 79px;
+  width: 600px;
+  height: 300px;
+}
+.button-gen{
+  position: absolute;
+  top: 133px;
+  left: 509px;
+  width: 100px;
+  height: 50px;
+}
+
+.button-gen-color{
+  background: #52C8D0;
+}
+
+.menu-item-text.active{
+  color: #52C8D0;
+}
+
+.blue{
+  color: #52C8D0;
+}
+.fiol{
+  color: #5D6BBB;
+}
+.purple{
+  color: #984D9B;
+}
