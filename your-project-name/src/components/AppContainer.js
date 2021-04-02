@@ -1,5 +1,5 @@
 import React from 'react';
-import Main from "./BodyCard";
+import BodyCard from "./BodyCard";
 import LeftMenu from "./LeftMenu";
 import Header from "./Header";
 import '../App.global.css'
@@ -27,7 +27,7 @@ export default class AppContainer extends React.Component {
       <div className="App">
         <Header/>
         <LeftMenu onChangeActive={this.onchangeActive}/>
-        <Main active={this.state.active}/>
+        <BodyCard active={this.state.active}/>
       </div>
     );
   }

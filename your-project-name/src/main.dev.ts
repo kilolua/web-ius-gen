@@ -14,7 +14,7 @@ import path from 'path';
 import { app, BrowserWindow, shell, ipcMain, dialog } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
-import MenuBuilder from './menu';
+import { Generate } from './scriptRender/index'
 
 export default class AppUpdater {
   constructor() {
@@ -70,7 +70,8 @@ const createWindow = async () => {
   mainWindow = new BrowserWindow({
     show: false,
     width: 1024,
-    height: 728,
+    height: 768,
+    frame:false,
     icon: getAssetPath('icon.png'),
     webPreferences: {
       nodeIntegration: true,
@@ -96,9 +97,6 @@ const createWindow = async () => {
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
-
-  const menuBuilder = new MenuBuilder(mainWindow);
-  menuBuilder.buildMenu();
 
   // Open urls in the user's browser
   mainWindow.webContents.on('new-window', (event, url) => {
@@ -128,6 +126,27 @@ ipcMain.on('get-file-name', async (event) => {
   folder = await dialog.showOpenDialog({ properties: ['openDirectory'] })
   // console.log(folder)
   event.sender.send('get-file-name-post', folder.filePaths);
+})
+
+ipcMain.on('get-save-folder', async (event) => {
+  let folder: Electron.OpenDialogReturnValue;
+  folder = await dialog.showOpenDialog({ properties: ['openDirectory'] })
+  // console.log(folder)
+  event.sender.send('get-save-folder-post', folder.filePaths);
+})
+
+ipcMain.on('generate-script', (event, args) => {
+
+  let data = JSON.parse(args);
+  let resData = Generate(data.dataMockFolder, data.saveFolder);
+  let postData = JSON.stringify(resData);
+  event.sender.send('generate-script-post', postData);
+})
+
+ipcMain.on('close-window', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
 })
 
 app.whenReady().then(createWindow).catch(console.log);

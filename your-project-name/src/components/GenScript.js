@@ -10,22 +10,36 @@ export default class GenScript extends React.Component {
     super(props);
     this.state = {
       dataMockFolder:"",
+      saveFolder:"",
     };
+    this.generate = this.generate.bind(this);
   }
 
-  // generate(){
-  //   window.ipcRenderer.send('asynchronous-message', this.state.dataMockFolder);
-  // }
-  //
+  generate(){
+    let data = {
+      dataMockFolder:this.state.dataMockFolder,
+      saveFolder:this.state.saveFolder,
+    }
+    ipcRenderer.send('generate-script', JSON.stringify(data));
+  }
+
   getFolderDataMock(){
     ipcRenderer.send('get-file-name', "get")
 
   }
+
+  getSaveFolder(){
+    ipcRenderer.send('get-save-folder', "get")
+
+  }
+
   componentDidMount() {
     ipcRenderer.on('get-file-name-post', (event, arg) => {
-      // document.getElementById('input').value = arg;
       this.setState({dataMockFolder:arg[0]})
-      console.log(arg[0])
+    })
+    ipcRenderer.on('get-save-folder-post', (event, arg) => {
+      this.setState({saveFolder:arg[0]})
+      console.log(arg)
     })
   }
   render() {
@@ -49,13 +63,15 @@ export default class GenScript extends React.Component {
               placeholder="Where to save..."
               aria-label="DataMock"
               aria-describedby="basic-addon2"
+              value={this.state.saveFolder}
+              onChange={(e)=>this.setState({saveFolder:e.target.value})}
             />
             <InputGroup.Append>
-              <Button variant="outline-secondary"><img alt="" width="20px" height="20px" src={icon}/></Button>
+              <Button onClick={this.getSaveFolder} variant="outline-secondary"><img alt="" width="20px" height="20px" src={icon}/></Button>
             </InputGroup.Append>
           </InputGroup>
           <div className="button-gen">
-            <Button className="button-gen-color">Generate</Button>
+            <Button onClick={this.generate} className="button-gen-color">Generate</Button>
           </div>
         </div>
       </div>
