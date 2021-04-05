@@ -1,13 +1,17 @@
 {
-  "name": "electron-react-boilerplate",
-  "productName": "electron-react-boilerplate",
-  "version": "0.0.2",
+  "name": "webius-gen",
+  "productName": "webius-gen",
+  "version": "0.0.7",
   "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
   "main": "./main.prod.js",
   "author": {
     "name": "Electron React Boilerplate Maintainers",
     "email": "electronreactboilerplate@gmail.com",
     "url": "https://github.com/electron-react-boilerplate"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/kilolua/web-ius-gen.git"
   },
   "scripts": {
     "electron-rebuild": "node -r ../.erb/scripts/BabelRegister.js ../.erb/scripts/ElectronRebuild.js",
