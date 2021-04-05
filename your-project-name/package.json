@@ -1,5 +1,5 @@
 {
-  "name": "electron-react-boilerplate",
+  "name": "test-update",
   "productName": "ElectronReact",
   "description": "Electron application boilerplate based on React, React Router, Webpack, React Fast Refresh for rapid application development",
   "scripts": {
@@ -86,8 +86,8 @@
     ],
     "publish": {
       "provider": "github",
-      "owner": "electron-react-boilerplate",
-      "repo": "electron-react-boilerplate"
+      "owner": "testUpdate",
+      "repo": "testUpdate"
     }
   },
   "repository": {

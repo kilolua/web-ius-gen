@@ -12,8 +12,11 @@ export default {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.(js|jsx|tsx|ts)$/,
         exclude: /node_modules/,
+        resolve: {
+          extensions: [".js", ".jsx", ".ts", ".tsx"]
+        },
         use: {
           loader: 'babel-loader',
           options: {
