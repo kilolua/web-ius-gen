@@ -3,6 +3,16 @@ const getButtonText = (data, name, baseName)=>{
 \tscr.setButtonJson({name:"${name}", text:getLangText("${baseName}_${name}"), visible:${data.visible}, enable:${data.enable}, ext:""}, onEmpty);`
 }
 
+const getInputText = (data, name)=>{
+  return `
+\tscr.setInputJson({name:"${name}", visible:${data.visible}, enable:${data.enable}, text:"${data.text}", type:"${data.type}",ext: ""}, onInput);`
+}
+
+const getTimeoutText = ()=>{
+  return `
+  scr.setTimeout(timeoutValue, "", onTimeout);`
+}
+
 const getLabelText = (data, name, baseName)=>{
   return`
 \tscr.setLabelJson({name:"${name}", value:getLangText("${baseName}_${name}")});`
@@ -19,6 +29,11 @@ const getLocalText = (name, text)=>{
 \t\t"ru":"${text}",
 \t\t"en":"***${text}"
 \t},`
+}
+
+const getHeaderScript = ()=>{
+  return `var timeoutValue = 60000;
+  `
 }
 
 const getBeginScreenData = (name)=>{
@@ -57,5 +72,8 @@ module.exports.getBeginLocalData = getBeginLocalData
 module.exports.getEndLocalData = getEndLocalData
 module.exports.getLocalText = getLocalText
 module.exports.getImageText = getImageText
+module.exports.getInputText = getInputText
+module.exports.getTimeoutText = getTimeoutText
+
 
 

@@ -41,11 +41,28 @@ const getScreenData = (data, baseName)=>{
       res += supportText.getImageText(data.image[key], key, baseName);
     }
   }
+  if (!!data.input){
+    for (key in data.input){
+      res += supportText.getInputText(data.input[key], key);
+    }
+  }
+  res += supportText.getTimeoutText();
   return res
 }
 
 const getNameLocalElement = (name, baseName)=>{
   return `${baseName}_${name}`
+}
+
+const getEndScript = (dataArr)=>{
+  console.log(dataArr)
+  let res = `function initScreens() {
+\tscr = new Screen(start, "");\n`
+  for (let file of dataArr){
+    res += `\t${file} = new Screen(${file}, "${file}");\n`
+  }
+  res += `}`
+  return res
 }
 
 const getLocalData = (data, baseName)=>{
@@ -64,11 +81,11 @@ const getLocalData = (data, baseName)=>{
   return res
 }
 
-const generateScript = (jsonData, baseName)=>{
+const generateScript = (jsonData, baseName, renderName)=>{
   let res = "";
   res = supportText.getBeginScreenData(baseName);
   res += getScreenData(jsonData, baseName);
-  res += supportText.getEndScreenData(baseName);
+  res += supportText.getEndScreenData(renderName);
   return res;
 }
 
@@ -79,19 +96,24 @@ const generateLocal = (jsonData, baseName) => {
 }
 
 const Generate = (url, urlSave) => {
-  var files = fs.readdirSync(url);
+  var folders = fs.readdirSync(url);
   let resScript = "";
   let resLocal = "";
   resLocal = supportText.getBeginLocalData();
-  for (let file of files){
-    const data = fs.readFileSync(url+"/"+file, {encoding:'utf8', flag:'r'});
-    let res = correctlyJSON(data);
-    let jsonRes = JSON.parse(res.toString())
-    let baseName = file.substr(0, file.lastIndexOf("."))
-    resScript += generateScript(jsonRes, baseName);
-    resLocal += generateLocal(jsonRes, baseName);
-    generateLocal(jsonRes);
+  for (let folder of folders){
+    var files = fs.readdirSync(url + '\\' + folder);
+    console.log(files);
+    for (let file of files) {
+      const data = fs.readFileSync(url + "\\" + folder + '\\' +file, { encoding: 'utf8', flag: 'r' });
+      let res = correctlyJSON(data);
+      let jsonRes = JSON.parse(res.toString())
+      let baseName = file.substr(0, file.lastIndexOf("."))
+      resScript += generateScript(jsonRes, baseName , folder);
+      resLocal += generateLocal(jsonRes, baseName);
+      generateLocal(jsonRes);
+    }
   }
+  //resScript += getEndScript(files)
   resLocal += supportText.getEndLocalData();
   fs.writeFileSync(urlSave+'/out.js', resScript);
   fs.writeFileSync(urlSave+'/local.js', resLocal);

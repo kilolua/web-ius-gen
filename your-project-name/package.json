@@ -1,7 +1,7 @@
 {
   "name": "test-update",
-  "productName": "ElectronReact",
-  "description": "Electron application boilerplate based on React, React Router, Webpack, React Fast Refresh for rapid application development",
+  "productName": "WEBIUS-GEN",
+  "description": "Generate a script and local cod for webius",
   "scripts": {
     "build": "concurrently \"yarn build:main\" \"yarn build:renderer\"",
     "build:main": "cross-env NODE_ENV=production webpack --config ./.erb/configs/webpack.config.main.prod.babel.js",
@@ -31,7 +31,7 @@
     ]
   },
   "build": {
-    "productName": "ElectronReact",
+    "productName": "WEBIUS-GEN",
     "appId": "org.erb.ElectronReact",
     "files": [
       "dist/",
@@ -96,26 +96,11 @@
     "url": "https://github.com/kilolua/web-ius-gen.git"
   },
   "author": {
-    "name": "Electron React Boilerplate Maintainers",
-    "email": "electronreactboilerplate@gmail.com",
+    "name": "Nick Gladkov",
+    "email": "n.gladkov@tm-serv.ru",
     "url": "https://electron-react-boilerplate.js.org"
   },
-  "contributors": [
-    {
-      "name": "Amila Welihinda",
-      "email": "amilajack@gmail.com",
-      "url": "https://github.com/amilajack"
-    },
-    {
-      "name": "John Tran",
-      "email": "jptran318@gmail.com",
-      "url": "https://github.com/jooohhn"
-    }
-  ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues"
-  },
   "keywords": [
     "electron",
     "boilerplate",

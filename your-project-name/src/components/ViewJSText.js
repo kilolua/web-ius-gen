@@ -2,7 +2,7 @@ import React from 'react'
 import '../App.global.css'
 import Prism from "prismjs";
 import {Button} from "react-bootstrap";
-const { ipcRenderer } = require("electron");
+//const { ipcRenderer } = require("electron");
 
 export default class ViewJSText extends React.Component {
   constructor(props) {

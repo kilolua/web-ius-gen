@@ -1,13 +1,13 @@
 {
   "name": "webius-gen",
-  "productName": "webius-gen",
+  "productName": "WEBIUS-GEN",
   "version": "0.0.7",
   "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
   "main": "./main.prod.js",
   "author": {
-    "name": "Electron React Boilerplate Maintainers",
-    "email": "electronreactboilerplate@gmail.com",
-    "url": "https://github.com/electron-react-boilerplate"
+    "name": "Nick Gladkov",
+    "email": "n.gladkov@tm-serv.ru",
+    "url": "https://electron-react-boilerplate.js.org"
   },
   "repository": {
     "type" : "git",
