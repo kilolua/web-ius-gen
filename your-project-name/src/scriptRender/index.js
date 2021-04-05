@@ -99,6 +99,7 @@ const Generate = (url, urlSave) => {
   var folders = fs.readdirSync(url);
   let resScript = "";
   let resLocal = "";
+  let genInitArr = [];
   resLocal = supportText.getBeginLocalData();
   for (let folder of folders){
     var files = fs.readdirSync(url + '\\' + folder);
@@ -108,12 +109,13 @@ const Generate = (url, urlSave) => {
       let res = correctlyJSON(data);
       let jsonRes = JSON.parse(res.toString())
       let baseName = file.substr(0, file.lastIndexOf("."))
+      genInitArr.push(baseName);
       resScript += generateScript(jsonRes, baseName , folder);
       resLocal += generateLocal(jsonRes, baseName);
       generateLocal(jsonRes);
     }
   }
-  //resScript += getEndScript(files)
+  resScript += getEndScript(genInitArr)
   resLocal += supportText.getEndLocalData();
   fs.writeFileSync(urlSave+'/out.js', resScript);
   fs.writeFileSync(urlSave+'/local.js', resLocal);
