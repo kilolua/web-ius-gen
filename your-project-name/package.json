@@ -220,6 +220,7 @@
     "prettier": "^2.0.5",
     "react-refresh": "^0.9.0",
     "react-test-renderer": "^17.0.1",
+    "request": "^2.88.2",
     "rimraf": "^3.0.0",
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",
@@ -238,6 +239,8 @@
     "electron-log": "^4.2.4",
     "electron-updater": "^4.3.4",
     "history": "^5.0.0",
+    "node-fetch": "^2.6.1",
+    "node-json2html": "^2.1.0",
     "prismjs": "^1.23.0",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.2",
@@ -245,6 +248,7 @@
     "react-router-dom": "^5.2.0",
     "regenerator-runtime": "^0.13.5",
     "source-map-support": "^0.5.19",
+    "sync-fetch": "^0.3.0",
     "update-electron-app": "^2.0.1"
   },
   "devEngines": {

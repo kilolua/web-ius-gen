@@ -17,8 +17,8 @@ export default class LeftMenu extends React.Component {
   }
 
   render() {
-    const menu = ['Generate Script', 'View Script', 'View local'];
-    const icons = [iconScriptGen, iconScriptView, iconLocalView];
+    const menu = ['Generate Script', 'View Script', 'View local', 'GenerateHTML'];
+    const icons = [iconScriptGen, iconScriptView, iconLocalView, iconLocalView];
     return (
       <div className="left-menu">
         <div className="menu-container">

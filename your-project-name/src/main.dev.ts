@@ -12,18 +12,12 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import path from 'path';
 import { app, BrowserWindow, shell, ipcMain, dialog } from 'electron';
-// import { autoUpdater } from 'electron-updater';
-// import log from 'electron-log';
-import { Generate } from './scriptRender/index'
+import { Generate } from './scriptRender/index';
+// import { GenerateHTML } from './htmlRender/index';
+import {GenerateHTML} from "./htmlRender"
+
 require('update-electron-app')();
 
-// export default class AppUpdater {
-//   constructor() {
-//     log.transports.file.level = 'info';
-//     autoUpdater.logger = log;
-//     autoUpdater.checkForUpdatesAndNotify();
-//   }
-// }
 
 let mainWindow: BrowserWindow | null = null;
 
@@ -72,11 +66,11 @@ const createWindow = async () => {
     show: false,
     width: 1024,
     height: 768,
-    frame:false,
+    frame: false,
     icon: getAssetPath('icon.png'),
     webPreferences: {
-      nodeIntegration: true,
-    },
+      nodeIntegration: true
+    }
   });
 
   mainWindow.loadURL(`file://${__dirname}/index.html`);
@@ -118,31 +112,41 @@ app.on('window-all-closed', () => {
 
 ipcMain.on('get-file-name', async (event) => {
   let folder: Electron.OpenDialogReturnValue;
-  folder = await dialog.showOpenDialog({ properties: ['openDirectory'] })
-  // console.log(folder)
+  folder = await dialog.showOpenDialog({ properties: ['openDirectory'] });
   event.sender.send('get-file-name-post', folder.filePaths);
-})
+});
 
 ipcMain.on('get-save-folder', async (event) => {
   let folder: Electron.OpenDialogReturnValue;
-  folder = await dialog.showOpenDialog({ properties: ['openDirectory'] })
-  // console.log(folder)
+  folder = await dialog.showOpenDialog({ properties: ['openDirectory'] });
   event.sender.send('get-save-folder-post', folder.filePaths);
-})
+});
+
+ipcMain.on('get-save-folder-html', async (event) => {
+  let folder: Electron.OpenDialogReturnValue;
+  folder = await dialog.showOpenDialog({ properties: ['openDirectory'] });
+  event.sender.send('get-save-folder-html-post', folder.filePaths);
+});
 
 ipcMain.on('generate-script', (event, args) => {
-
   let data = JSON.parse(args);
   let resData = Generate(data.dataMockFolder, data.saveFolder);
   let postData = JSON.stringify(resData);
   event.sender.send('generate-script-post', postData);
-})
+});
+
+ipcMain.on('generate-html', (event, args) => {
+  let data = JSON.parse(args);
+  let HTMLGen = new GenerateHTML;
+  HTMLGen.createHTML(data.figmaKey, data.figmaToken, data.saveFolder)
+  event.sender.send('generate-html-post', "OK");
+});
 
 ipcMain.on('close-window', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
-})
+});
 
 app.whenReady().then(createWindow).catch(console.log);
 
