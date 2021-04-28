@@ -1,7 +1,8 @@
 // @ts-ignore
-const fetch = require('node-fetch')
+const fetch = require('node-fetch');
 const fs = require('fs');
-import {SupportHtml} from './supportHtml'
+import { SupportHtml } from './supportHtml';
+
 const HTMLConstants = require('./textHtmlConst');
 
 export class GenerateHTML {
@@ -10,14 +11,14 @@ export class GenerateHTML {
     this.key = key;
     this.token = token;
     this.saveFolder = saveFolder;
-    fs.mkdir(saveFolder+'/style', function() {
-      console.log('OK')
+    fs.mkdir(saveFolder + '/style', function() {
+      console.log('OK');
     });
-    fs.mkdir(saveFolder+'/img', function() {
-      console.log('OK')
+    fs.mkdir(saveFolder + '/img', function() {
+      console.log('OK');
     });
-    fs.mkdir(saveFolder+'/datamock', function() {
-      console.log('OK')
+    fs.mkdir(saveFolder + '/datamock', function() {
+      console.log('OK');
     });
   }
 
@@ -30,7 +31,7 @@ export class GenerateHTML {
       data.json().then((data) => {
         this.createHTML(data);
         callback();
-      })
+      });
     });
   }
 
@@ -71,6 +72,7 @@ export class GenerateHTML {
     this.support.generateCSSFile(this.saveFolder);
   };
 }
+
 module.exports = {
-  GenerateHTML,
+  GenerateHTML
 };

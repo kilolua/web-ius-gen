@@ -139,7 +139,7 @@ ipcMain.on('generate-html', (event, args) => {
   let data = JSON.parse(args);
   let HTMLGen = new GenerateHTML(data.figmaKey, data.figmaToken, data.saveFolder);
   console.log(data);
-  HTMLGen.getFigmaObj(()=>{
+  HTMLGen.getFigmaObj(() => {
     event.sender.send('generate-html-post', 'OK');
   });
 

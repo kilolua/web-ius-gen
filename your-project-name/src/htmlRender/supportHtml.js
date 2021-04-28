@@ -216,7 +216,7 @@ export class SupportHtml {
       }
     }).then((data) => {
       data.json().then((data) => {
-        let imgName = saveFolder+"/img/"+this.getCorrectlyClassNameCSS(node.name) + '.png';
+        let imgName = saveFolder + '/img/' + this.getCorrectlyClassNameCSS(node.name) + '.png';
         if (data.err === null) {
           this.download(data.images[node.id], imgName, function() {
             console.log('done');
@@ -259,7 +259,7 @@ export class SupportHtml {
   }
 
   generateCSSFile(saveFolder) {
-    fs.writeFileSync(saveFolder+'/style/GlobalStyle.css', this.cssText);
+    fs.writeFileSync(saveFolder + '/style/GlobalStyle.css', this.cssText);
   }
 }
 

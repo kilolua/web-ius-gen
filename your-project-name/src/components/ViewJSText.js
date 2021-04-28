@@ -1,7 +1,7 @@
-import React from 'react'
-import '../App.global.css'
-import Prism from "prismjs";
-import {Button} from "react-bootstrap";
+import React from 'react';
+import '../App.global.css';
+import Prism from 'prismjs';
+import { Button } from 'react-bootstrap';
 //const { ipcRenderer } = require("electron");
 
 export default class ViewJSText extends React.Component {
@@ -14,8 +14,8 @@ export default class ViewJSText extends React.Component {
     Prism.highlightAll();
   }
 
-  copyText(){
-    console.log(this)
+  copyText() {
+    console.log(this);
     navigator.clipboard.writeText(this.props.dataText)
       .then(() => {
         // Получилось!
@@ -27,14 +27,14 @@ export default class ViewJSText extends React.Component {
 
   render() {
     return (
-      <div className="view-code">
-        <pre className="code-back" width="100%" height="100%">
-          <code width="100%" height="100%" className="language-javascript">
+      <div className='view-code'>
+        <pre className='code-back' width='100%' height='100%'>
+          <code width='100%' height='100%' className='language-javascript'>
             {this.props.dataText}
           </code>
         </pre>
-        <div className="button-copy">
-          <Button onClick={this.copyText} className="button-gen-color">Copy</Button>
+        <div className='button-copy'>
+          <Button onClick={this.copyText} className='button-gen-color'>Copy</Button>
         </div>
       </div>
     );

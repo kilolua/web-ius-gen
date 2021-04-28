@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const supportText = require('./supportText');
-const filename = path.join(__dirname, 'datamock');
 
 const correctlyJSON = str => {
   let text = str;
@@ -11,15 +10,11 @@ const correctlyJSON = str => {
   text = text.substr(0, text.lastIndexOf('}') + 1);
   text = text.trim();
   text = text.replace(/\s{2,}/g, ' ');
-  //text = text.replace(/ /g, '');
   text = text.replace(/,}/g, '}');
   text = text.replace(/'/g, '"');
   text = text.replace(/:/g, ': ');
   text = text.replace(/,/g, ', ');
-  console.log(text);
   text = JSON.stringify(eval('(' + text + ')'));
-  //console.log(text)
-  //console.log(eval(text))
   return text;
 };
 
