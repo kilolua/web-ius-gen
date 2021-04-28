@@ -21,7 +21,7 @@ export class GenerateHTML {
     });
   }
 
-  getFigmaObj() {
+  getFigmaObj(callback) {
     fetch(`https://api.figma.com/v1/files/${this.key}`, {
       headers: {
         'X-Figma-Token': this.token
@@ -29,6 +29,7 @@ export class GenerateHTML {
     }).then((data) => {
       data.json().then((data) => {
         this.createHTML(data);
+        callback();
       })
     });
   }

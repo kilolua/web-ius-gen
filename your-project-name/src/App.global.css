@@ -4,50 +4,54 @@
  */
 @import "~prismjs/themes/prism-okaidia.css";
 
-body{
+body {
   user-select: none;
 }
-.App{
-  position:absolute;
-  left:0;
+
+.App {
+  position: absolute;
+  left: 0;
   top: 0;
-  margin:0;
-  padding:0;
-  overflow:hidden;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
   width: 1024px;
   height: 768px;
 }
-.main{
-  position:absolute;
+
+.main {
+  position: absolute;
   top: 76px;
   left: 267px;
   width: 757px;
   height: 692px;
-  background:#121421;
+  background: #121421;
 }
 
-.code-back{
-  background:none;
+.code-back {
+  background: none;
 }
 
-.left-menu{
-  position:absolute;
+.left-menu {
+  position: absolute;
   top: 76px;
   left: 0;
   width: 267px;
   height: 692px;
-  background:#161A27;
+  background: #161A27;
 }
-.header{
-  position:absolute;
+
+.header {
+  position: absolute;
   top: 0;
   left: 0;
   width: 1024px;
   height: 76px;
-  background:#1D1F2C;
+  background: #1D1F2C;
 }
-.logo{
-  position:absolute;
+
+.logo {
+  position: absolute;
   top: 20px;
   left: 35px;
   font-style: normal;
@@ -55,31 +59,32 @@ body{
   font-size: 32px;
   line-height: 37px;
 }
-.menu-container{
-  position:absolute;
+
+.menu-container {
+  position: absolute;
   top: 0;
   left: 0;
   width: 267px;
   height: 227px;
-  background:#27283C;
+  background: #27283C;
 }
 
-.menu-items{
-  position:absolute;
+.menu-items {
+  position: absolute;
   top: 31px;
   left: 36px;
   width: 162px;
   height: 151px;
-  background:#27283C;
+  background: #27283C;
 }
 
-.menu-item{
-  width:162px;
+.menu-item {
+  width: 162px;
   height: 28px;
   margin-bottom: 13px;
 }
 
-.menu-item-text{
+.menu-item-text {
   position: relative;
   display: inline-block;
   left: 16px;
@@ -88,28 +93,30 @@ body{
   font-weight: normal;
   font-size: 16px;
   line-height: 19px;
-  height:28px;
+  height: 28px;
   /* identical to box height */
 
   cursor: pointer;
   color: #FFFFFF;
 }
 
-.input-card{
+.input-card {
   position: absolute;
   top: 50px;
   left: 79px;
   width: 600px;
   height: 300px;
 }
-.button-gen{
+
+.button-gen {
   position: absolute;
   top: 133px;
   left: 509px;
   width: 100px;
   height: 50px;
 }
-.button-copy{
+
+.button-copy {
   position: absolute;
   top: 634px;
   left: 675px;
@@ -117,7 +124,7 @@ body{
   height: 50px;
 }
 
-.closeButton{
+.closeButton {
   position: absolute;
   top: 27px;
   left: 980px;
@@ -126,41 +133,56 @@ body{
   cursor: pointer;
 }
 
-.closeButton:hover{
-  opacity:0.7;
+.closeButton:hover {
+  opacity: 0.7;
 }
 
-.button-gen-color{
+.button-gen-color {
   background: #52C8D0;
 }
 
-.menu-item-text.active{
+.menu-item-text.active {
   color: #52C8D0;
 }
 
-.view-code{
-  position:absolute;
-  background:#181A27;
-  left:10px;
-  top:10px;
-  width:737px;
-  height:623px;
+.view-code {
+  position: absolute;
+  background: #181A27;
+  left: 10px;
+  top: 10px;
+  width: 737px;
+  height: 623px;
   /*overflow: auto;*/
   color: #FFFFFF;
   user-select: text;
 }
-.view-code-text{
+
+.view-code-text {
   color: #FFFFFF;
-  width:100%;
-  height:100%;
-  font-size:10px;
+  width: 100%;
+  height: 100%;
+  font-size: 10px;
 }
-.blue{
+
+.loader {
+  visibility: hidden;
+  position: absolute;
+  top: 300px;
+  left: 356px;
+  color: #FFFFFF;
+}
+.loader.wait {
+  visibility: visible;
+}
+
+.blue {
   color: #52C8D0;
 }
-.fiol{
+
+.fiol {
   color: #5D6BBB;
 }
-.purple{
+
+.purple {
   color: #984D9B;
 }

@@ -14,7 +14,7 @@ import path from 'path';
 import { app, BrowserWindow, shell, ipcMain, dialog } from 'electron';
 import { Generate } from './scriptRender/index';
 // import { GenerateHTML } from './htmlRender/index';
-import {GenerateHTML} from "./htmlRender"
+import { GenerateHTML } from './htmlRender';
 
 require('update-electron-app')();
 
@@ -138,9 +138,11 @@ ipcMain.on('generate-script', (event, args) => {
 ipcMain.on('generate-html', (event, args) => {
   let data = JSON.parse(args);
   let HTMLGen = new GenerateHTML(data.figmaKey, data.figmaToken, data.saveFolder);
-  console.log(data)
-  HTMLGen.getFigmaObj();
-  event.sender.send('generate-html-post', "OK");
+  console.log(data);
+  HTMLGen.getFigmaObj(()=>{
+    event.sender.send('generate-html-post', 'OK');
+  });
+
 });
 
 ipcMain.on('close-window', () => {

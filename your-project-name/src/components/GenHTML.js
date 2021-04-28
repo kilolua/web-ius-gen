@@ -1,7 +1,7 @@
 import React from 'react'
 import '../App.global.css'
 import icon from '../../assets/folder.png'
-import {InputGroup, FormControl, Button} from 'react-bootstrap';
+import { InputGroup, FormControl, Button, Spinner } from 'react-bootstrap';
 const { ipcRenderer } = require("electron");
 
 
@@ -12,11 +12,13 @@ export default class GenHTML extends React.Component {
       figmaKey:"wx5gaDdT6XEU8YeZFLGyeV",
       saveFolder:"",
       figmaToken:"166351-7aac409c-54bc-4425-90c8-eb1a8585d613",
+      generating: "",
     };
     this.generate = this.generate.bind(this);
   }
 
   generate(){
+    this.setState({generating:"wait"})
     let data = {
       figmaKey:this.state.figmaKey,
       figmaToken:this.state.figmaToken,
@@ -34,6 +36,10 @@ export default class GenHTML extends React.Component {
     ipcRenderer.on('get-save-folder-html-post', (event, arg) => {
       this.setState({saveFolder:arg[0]})
       console.log(arg)
+    })
+    ipcRenderer.on('generate-html-post', (event, arg) => {
+      this.setState({generating:""})
+      console.log("fuck")
     })
   }
   render() {
@@ -74,6 +80,7 @@ export default class GenHTML extends React.Component {
             <Button onClick={this.generate} className="button-gen-color">Generate</Button>
           </div>
         </div>
+        <div className={"loader "+this.state.generating}><Spinner animation="border" variant="light" /> Generating...</div>
       </div>
     );
   }
