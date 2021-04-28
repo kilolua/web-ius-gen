@@ -9,9 +9,9 @@ export default class GenHTML extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      figmaKey:"",
+      figmaKey:"wx5gaDdT6XEU8YeZFLGyeV",
       saveFolder:"",
-      figmaToken:"",
+      figmaToken:"166351-7aac409c-54bc-4425-90c8-eb1a8585d613",
     };
     this.generate = this.generate.bind(this);
   }
