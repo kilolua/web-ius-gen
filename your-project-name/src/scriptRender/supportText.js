@@ -1,6 +1,6 @@
 const getButtonText = (data, name, baseName) => {
   return `
-\tscr.setButtonJson({name:"${name}", text:getLangText("${baseName}_${name}"), visible:${data.visible}, enable:${data.enable}, ext:""}, onEmpty);`;
+\tscr.setButtonJson({name:"${name}", text:getLangText("${baseName}_${name}"), visible:${data.visible}, enable:${data.enable}, ext:${data.ext}, onEmpty);`;
 };
 
 const getInputText = (data, name) => {

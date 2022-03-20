@@ -14,6 +14,8 @@ const correctlyJSON = str => {
   text = text.replace(/'/g, '"');
   text = text.replace(/:/g, ': ');
   text = text.replace(/,/g, ', ');
+  console.log(text)
+  // console.log(eval('(' + text + ')'))
   text = JSON.stringify(eval('(' + text + ')'));
   return text;
 };

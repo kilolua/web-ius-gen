@@ -210,7 +210,7 @@ export class SupportHtml {
   };
 
   getImageData(node, saveFolder) {
-    fetch('https://api.figma.com/v1/images/wx5gaDdT6XEU8YeZFLGyeV?format=png&ids=' + node.id, {
+    fetch('https://api.figma.com/v1/images/jxtoo6FhTpdnbPg4mWW8U9?format=png&ids=' + node.id, {
       headers: {
         'X-Figma-Token': '166351-7aac409c-54bc-4425-90c8-eb1a8585d613'
       }
